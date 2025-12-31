@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="no-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GAMI EMPIRE | Sovereign Business Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <!-- Professional Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>G</text></svg>">
+</head>
+<body class="light-mode">
+    <!-- Persistent Sovereign Logo Watermark -->
+    <div class="sovereign-watermark">
+        <svg class="watermark-logo" viewBox="0 0 200 200">
+            <path d="M40,70 L80,40 L120,70 L160,40 L160,90 L40,90 Z" fill="#D4AF37"/>
+            <ellipse cx="100" cy="65" rx="30" ry="15" fill="#50C878"/>
+        </svg>
+    </div>
+
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="screen active">
+        <div class="splash-container">
+            <div class="logo-pulse">
+                <svg class="imperial-logo" viewBox="0 0 200 200">
+                    <path d="M40,70 L80,40 L120,70 L160,40 L160,90 L40,90 Z" fill="#D4AF37"/>
+                    <ellipse cx="100" cy="65" rx="30" ry="15" fill="#50C878"/>
+                </svg>
+            </div>
+            <div class="splash-text">
+                <h1 class="splash-title">GAMI EMPIRE</h1>
+                <p class="splash-subtitle">Sovereign Business Architecture</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Gateway -->
+    <div id="authScreen" class="screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <svg class="auth-logo" viewBox="0 0 200 200">
+                    <path d="M40,70 L80,40 L120,70 L160,40 L160,90 L40,90 Z" fill="#D4AF37"/>
+                    <ellipse cx="100" cy="65" rx="30" ry="15" fill="#50C878"/>
+                </svg>
+                <h1 class="auth-title">SOVEREIGN ACCESS</h1>
+                <p class="auth-subtitle">Authentication Required</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Sovereign Identity" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Security Credential" required>
+                </div>
+                <button type="submit" class="auth-button primary">
+                    Access Platform
+                </button>
+                <div class="auth-links">
+                    <a href="#" class="auth-link" id="showSignup">Establish Sovereignty</a>
+                    <a href="#" class="auth-link" id="adminAccess">Admin Gateway</a>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <input type="text" id="newUsername" placeholder="Choose Sovereign Identity" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="newPassword" placeholder="Create Security Credential" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Credential" required>
+                </div>
+                <button type="submit" class="auth-button primary">
+                    Establish Empire
+                </button>
+                <div class="auth-links">
+                    <a href="#" class="auth-link" id="showLogin">Existing Sovereignty</a>
+                </div>
+            </form>
+
+            <!-- Admin Access Form (Hidden) -->
+            <form id="adminForm" class="auth-form">
+                <div class="form-group">
+                    <input type="text" id="adminUsername" placeholder="Target Username" required>
+                </div>
+                <div class="admin-warning">
+                    <p>Sovereign Override Protocol</p>
+                    <p>Ghost Access Enabled</p>
+                </div>
+                <button type="submit" class="auth-button warning">
+                    Execute Sovereign Override
+                </button>
+                <div class="auth-links">
+                    <a href="#" class="auth-link" id="backToLogin">Standard Access</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboardScreen" class="screen">
+        <!-- Sovereign Navigation -->
+        <nav class="sovereign-nav">
+            <button class="nav-menu" id="navMenu">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+            
+            <div class="nav-center">
+                <div class="wealth-display">
+                    <span class="wealth-label">SOVEREIGN WEALTH:</span>
+                    <span id="wealthValue" class="wealth-value">10,000</span>
+                </div>
+            </div>
+            
+            <button class="nav-profile" id="profileButton">
+                <div class="profile-initial" id="profileInitial">S</div>
+            </button>
+        </nav>
+
+        <!-- 360-Degree World View -->
+        <div class="world-container">
+            <div id="worldView" class="world-view">
+                <!-- Three.js canvas will be injected here -->
+            </div>
+            
+            <!-- World Objects Overlay -->
+            <div class="world-objects">
+                <div class="world-object" data-type="tree" data-id="tree_001">
+                    <div class="object-icon">T</div>
+                    <span class="object-label">Sovereign Tree</span>
+                </div>
+                <div class="world-object" data-type="crow" data-id="crow_001">
+                    <div class="object-icon">C</div>
+                    <span class="object-label">Crow Rental</span>
+                </div>
+                <div class="world-object" data-type="shop" data-id="shop_001">
+                    <div class="object-icon">S</div>
+                    <span class="object-label">Business Center</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Panel -->
+        <div class="action-panel">
+            <button class="action-btn" id="aiMasterBtn">
+                <span class="btn-label">AI MASTER</span>
+            </button>
+            <button class="action-btn" id="marketBtn">
+                <span class="btn-label">MARKET</span>
+            </button>
+            <button class="action-btn" id="settingsBtn">
+                <span class="btn-label">SOVEREIGN CONTROL</span>
+            </button>
+        </div>
+
+        <!-- Navigation Dock -->
+        <div class="nav-dock">
+            <div class="dock-items">
+                <button class="dock-item active" data-screen="dashboard">
+                    <span class="dock-icon">H</span>
+                    <span class="dock-label">Dashboard</span>
+                </button>
+                <button class="dock-item" data-screen="assets">
+                    <span class="dock-icon">A</span>
+                    <span class="dock-label">Assets</span>
+                </button>
+                <button class="dock-item" data-screen="economy">
+                    <span class="dock-icon">E</span>
+                    <span class="dock-label">Economy</span>
+                </button>
+                <button class="dock-item" data-screen="intelligence">
+                    <span class="dock-icon">I</span>
+                    <span class="dock-label">Intelligence</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Master Interface -->
+    <div id="aiScreen" class="screen">
+        <div class="ai-container">
+            <div class="ai-header">
+                <button class="ai-back" id="aiBackBtn">←</button>
+                <div class="ai-title">
+                    <h2>SOVEREIGN AI MASTER</h2>
+                    <p class="ai-status">Neural Intelligence Online</p>
+                </div>
+            </div>
+            
+            <div class="ai-messages" id="aiMessages">
+                <div class="message ai-message">
+                    <p>Sovereign Executive, I am your AI Master. The entire GAMI Empire architecture is indexed in my neural memory. I know every button, every setting, and every economic entity.</p>
+                    <p class="message-time">System Initialized</p>
+                </div>
+            </div>
+            
+            <div class="ai-input-container">
+                <input type="text" class="ai-input" id="aiInput" placeholder="Command your AI Master...">
+                <button class="ai-send" id="aiSendBtn">→</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sovereign Control Matrix (500 Settings) -->
+    <div id="settingsScreen" class="screen">
+        <div class="settings-container">
+            <div class="settings-header">
+                <button class="settings-back" id="settingsBackBtn">←</button>
+                <h2 class="settings-title">SOVEREIGN CONTROL MATRIX</h2>
+                <div class="settings-count">
+                    <span id="activeSettings">0</span>/500 ACTIVE
+                </div>
+            </div>
+            
+            <div class="settings-content" id="settingsContent">
+                <!-- Settings will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sovereign Menu -->
+    <div class="sovereign-menu" id="sovereignMenu">
+        <div class="menu-container">
+            <div class="menu-header">
+                <h3>SOVEREIGN NAVIGATION</h3>
+                <button class="menu-close" id="menuClose">×</button>
+            </div>
+            <div class="menu-items">
+                <button class="menu-item" id="menuProfile">Sovereign Profile</button>
+                <button class="menu-item" id="menuEconomy">Economic Dashboard</button>
+                <button class="menu-item" id="menuAssets">Asset Management</button>
+                <button class="menu-item" id="menuAnalytics">Neural Analytics</button>
+                <button class="menu-item" id="menuAdmin">Admin Protocols</button>
+                <button class="menu-item" id="menuSupport">Sovereign Support</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Overlay -->
+    <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h3>SOVEREIGN ADMIN PROTOCOL</h3>
+                <button class="admin-close" id="adminClose">×</button>
+            </div>
+            <div class="admin-content">
+                <input type="text" id="userSearch" placeholder="Search User for Ghost Access">
+                <div id="userResults"></div>
+                <button id="executeOverride" class="admin-btn">Execute Ghost Override</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="AI_Master.js"></script>
+    <script src="Script.js"></script>
+</body>
+</html>
