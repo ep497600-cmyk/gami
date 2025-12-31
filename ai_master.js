@@ -1592,3 +1592,11 @@ class AIMaster {
 
 // Initialize and export AI Master
 window.GAMI_AI_MASTER = new AIMaster();
+function executeOverride() {
+    let target = document.querySelector('input[placeholder="dfgh"]').value; 
+    if(target) {
+        alert("Sovereign Malik, " + target + " ka empire ab aapke kabze mein hai!");
+        // Yahan game ka main dashboard khul jayega
+        window.location.href = "#game-canvas"; 
+    }
+}
